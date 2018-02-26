@@ -25,6 +25,9 @@ public class SaxParser extends Application {
         
         stage.setScene(scene);
         stage.show();
+        
+        ParseXML parser = new ParseXML(stage);
+        parser.openFileToParse();
     }
 
     /**
