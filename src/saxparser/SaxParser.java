@@ -13,13 +13,17 @@ import javafx.stage.Stage;
 
 /**
  *
- * @author grant
+ * @author Grant
  */
 public class SaxParser extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("SaxParserFXMLDocument.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("SaxParserFXMLDocument.fxml"));
+        
+        Parent root = (Parent) loader.load();
+        
+        SaxParserFXMLDocumentController controller = (SaxParserFXMLDocumentController) loader.getController();
         
         Scene scene = new Scene(root);
         
@@ -27,7 +31,7 @@ public class SaxParser extends Application {
         stage.show();
         
         ParseXML parser = new ParseXML(stage);
-        parser.openFileToParse();
+        controller.setParser(parser);
     }
 
     /**

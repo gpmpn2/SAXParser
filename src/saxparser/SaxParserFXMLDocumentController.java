@@ -10,15 +10,21 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextArea;
 
 /**
  *
- * @author grant
+ * @author Grant
  */
 public class SaxParserFXMLDocumentController implements Initializable {
     
     @FXML
     private Button openButton;
+    
+    @FXML
+    private TextArea textArea;
+    
+    private ParseXML parser;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -27,7 +33,10 @@ public class SaxParserFXMLDocumentController implements Initializable {
     
     @FXML
     private void handleOpenButton(){
-        System.out.println("OPENING FILE CHOOSER");
+        textArea.setText(parser.openFileToParse());
     }
     
+    public void setParser(ParseXML parser) {
+        this.parser = parser;
+    }
 }
